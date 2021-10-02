@@ -1,0 +1,35 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+using namespace std;
+int main()
+{
+ string s[3], str, flag = ""; // flag是省份的标志
+ int cnt = 0;
+ while(getline(cin, str))
+ {
+  int i = 0;
+  str += "\t";
+  for (int j = 0; j < str.size(); j ++)
+  {
+   if(str[j] == '\t') i ++;
+   else
+   {
+    s[i] += str[j];
+   }
+  }//将str中的内容复制到s中
+  if(s[0] != flag)
+  {
+   if(cnt > 0) cout << endl << endl;
+   cout << s[0];
+   flag = s[0];
+   cnt ++;
+  }//相同的省份时只会输出一个（cnt=0时输出）
+  if(s[2]!= "0")
+  {
+   cout << endl; 
+   cout << s[1] << '\t' << s[2];
+  } //以0作为最后一个的数据整行都不会输出
+  s[0] = s[1] = s[2] = "";
+ return 0;
+ } 
